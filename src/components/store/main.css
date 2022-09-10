@@ -1,0 +1,9 @@
+.store {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view__container {
+    margin: 0 auto;
+    max-width: 50%;
+}
