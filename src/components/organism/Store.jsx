@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import IconSwitch from '../icon_switch/IconSwitch';
-import CardsView from '../CardsView';
-import ListView from '../ListView';
-import products from "../Products";
-import './main.css'
+import { useState } from "react";
+import IconSwitch from '../molecules/IconSwitch';
+import CardsView from '../sections/CardsView';
+import ListView from '../sections/ListView';
+import products from '../data/Data';
 
 function Store() {
     let [state, setState] = useState("module");
@@ -12,9 +11,11 @@ function Store() {
     let module = () => {
         return <CardsView products={products} />;
     };
+
     let list = () => {
         return <ListView products={products} />;
     }
+
     let view = state === "module" ? module() : list();
 
     const onSwitch = () => {
@@ -27,7 +28,8 @@ function Store() {
     return (
         <div className="container">
             <div className="store">
-                <IconSwitch icon={icon} onSwitch={onSwitch} />
+                <IconSwitch icon={icon}
+                    onSwitch={onSwitch} />
             </div>
             <div className="view__container">
                 {view}

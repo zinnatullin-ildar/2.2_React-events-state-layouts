@@ -1,5 +1,4 @@
-import React from "react";
-import ShopCards from "./shop_cards/ShopCards";
+import ShopCards from '../molecules/ShopCards';
 
 function CardsView(props) {
     let { products } = props;

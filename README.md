@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Расположение товаров
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Вам необоходимо сделать приложение для отображение товаров в интернет-магазине. Заказчик хочет, чтобы пользователь мог увидеть товары в виде карточек или в виде списка, в зависимости от того, какое расположение выберет пользователь.
 
-## Available Scripts
+![cards view](https://github.com/netology-code/ra16-homeworks/blob/master/events-state/layouts/assets/card_view.png)
 
-In the project directory, you can run:
+## Описание проекта
 
-### `npm start`
+Реализуйте компонент `Store`, который управляет состоянием приложения, (хранит список товаров в атрибуте `products`).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Иконка разметки, которая указывает на переключение между типами расположения товаров реализована в компоненте без состояния `IconSwitch`, которому от `Store` мы передаем два свойства:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `icon` - название иконки, которую хотим показать. Название иконки соответствует названию класса из библиотеки [material icons](https://material.io/icons/#ic_view_module). В нашем случае это - либо `view_list`, либо `view_module`.
+- `onSwitch()` - обработчик события, который реагирует на нажатие пользователем на иконку.
 
-### `npm test`
+Пример:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+<IconSwitch
+  icon={"view_list"}
+  onSwitch={() => console.log("change state here")}
+/>
+```
 
-### `npm run build`
+Сами товары отображаются в компонентах без состояния `CardsView` или `ListView`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Компоненту `CardsView` от `Store` мы передаем свойство `cards` - массив с данными, каждый элемент из которого затем уже отображается с помощью карточки товара `ShopCard`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Т.е. `CardsView` отображает много карточек `ShopCard`. На один товар - одна карточка `ShopCard`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Компоненту `ListView` от `Store` мы передаем всего одно свойство `items` - массив с данными, каждый элемент из которого затем уже отображается с помощью `ShopItem` для товаров, которые мы хотим отобразить.
 
-### `npm run eject`
+Т.е. `ListView` отображает много `ShopItem`. На один товар - один `ShopItem`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Чтобы компонент `Store` мог реагировать на выбор пользователем вида разметки, в класс `Store` необходимо добавить состояние (state).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ваша задача:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- установить состояние выбранного типа разметки в обработчике события который `Store` передает в свойство `onSwitch` компонента `IconSwitch`
+- из компонента `Store` передать правильную иконку в свойство `icon` компонента `IconSwitch`
+- в компоненте `Store` отобразить товары в компоненте `CardsView` или `ListView` соответсвенно состоянию компонента `App`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![list_view](https://github.com/netology-code/ra16-homeworks/blob/master/events-state/layouts/assets/list_view.png)
 
-## Learn More
+Не забудьте подключить Material Icons:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```css
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+```

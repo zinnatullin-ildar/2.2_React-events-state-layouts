@@ -59,3 +59,46 @@
     padding: 4px 8px 4px 8px;
     cursor: pointer;
 }
+
+.store__btn {
+    margin: 10px;
+    user-select: none;
+    height: 30px;
+    cursor: pointer;
+}
+
+.store__shop-cards-line {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    margin-top: 20px;
+    background-color: #F7F7F7;
+}
+
+.shop-cards__img-line {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.shop-cards__container-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 30%;
+    font-family: "Inter", system-ui;
+    font-weight: 700;
+    color: #e44f3e;
+}
+
+.store {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view__container {
+    margin: 0 auto;
+    max-width: 50%;
+}

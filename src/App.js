@@ -1,4 +1,5 @@
-import Store from './components/store/Store';
+import Store from './components/organism/Store';
+import './main.css';
 
 function App() {
     return (

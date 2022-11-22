@@ -1,5 +1,4 @@
-import React from "react";
-import ShopItem from "./shop_item/ShopItem";
+import ShopItem from '../molecules/ShopItem';
 
 function ListView(props) {
     let { products } = props;
